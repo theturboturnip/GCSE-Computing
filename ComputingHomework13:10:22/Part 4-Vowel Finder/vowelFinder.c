@@ -4,7 +4,7 @@
 int main()
 {
 	char stringToAnalyse[256];
-	char* letterToAnalyse;
+	char letterToAnalyse;
 	int strLength;
 	int aNo;
 	int eNo;
@@ -22,8 +22,8 @@ int main()
 		oNo=0;
 		uNo=0;
 		printf("Please input a string to analyse\nString: ");
-		//printf("1");
-		scanf("%c",stringToAnalyse);
+		scanf("%s",stringToAnalyse);
+		//fprintf(stderr,"1");
 		strLength=strlen(stringToAnalyse);
 		for(i=1;i<=strLength;i++)
 		{
@@ -31,28 +31,34 @@ int main()
 			{
 				break;
 			}
-			printf("No problem here!");
-			letterToAnalyse[0]=stringToAnalyse[i];
-			if(strcmp(letterToAnalyse,"a")!=0||strcmp(letterToAnalyse,"A")!=0)
+			//fprintf(stderr,"No problem here!");
+			letterToAnalyse=stringToAnalyse[i-1];
+			if((letterToAnalyse=='a')||(letterToAnalyse=='A'))
 			{
 				aNo++;
-			}else if(strcmp(letterToAnalyse,"e")!=0||strcmp(letterToAnalyse,"E")!=0)
+			}else if((letterToAnalyse=='e')||(letterToAnalyse=='E'))
 			{
 				eNo++;
-			}else if(strcmp(letterToAnalyse,"i")!=0||strcmp(letterToAnalyse,"I")!=0)
+			}else if((letterToAnalyse=='i')||(letterToAnalyse=='I'))			
 			{
 				iNo++;
-			}else if(strcmp(letterToAnalyse,"o")!=0||strcmp(letterToAnalyse,"O")!=0)
+			}else if((letterToAnalyse=='o')||(letterToAnalyse=='O'))
 			{
 				oNo++;
-			}else if(strcmp(letterToAnalyse,"u")!=0||strcmp(letterToAnalyse,"U")!=0)
+			}else if((letterToAnalyse=='u')||(letterToAnalyse=='U'))
 			{	
 				uNo++;
 			}
-			otherNo=strLength-(aNo+eNo+iNo+oNo+uNo);
-			printf("Number of a(s):%d\nNumber of e(s):%d\nNumber of i(s):%d\nNumber of o(s):%d\nNumber of u(s):%d\nNumber of other letter(s):%d\n",aNo,eNo,iNo,oNo,uNo,otherNo);
-			
 		}
+		otherNo=strLength-(aNo+eNo+iNo+oNo+uNo);
+		printf("Number of a(s):%d\nNumber of e(s):%d\nNumber of i(s):%d\nNumber of o(s):%d\nNumber of u(s):%d\nNumber of other letter(s):%d\n",aNo,eNo,iNo,oNo,uNo,otherNo);
+		aNo*=(100/strLength);
+		eNo*=(100/strLength);
+		iNo*=(100/strLength);
+		oNo*=(100/strLength);
+		uNo*=(100/strLength);
+		otherNo*=(100/strLength);
+		printf("a %d%%\ne %d%%\ni %d%%\no %d%%\nu %d%%\nother %d%%\n",aNo,eNo,iNo,oNo,uNo,otherNo);
 	}
 	return 0;
 }
