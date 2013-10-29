@@ -84,7 +84,7 @@ int main()
 			iNo*=(100/strLength);
 			oNo*=(100/strLength);
 			uNo*=(100/strLength);
-			otherNo*=(100/strLength);
+			otherNo=100-(aNo+eNo+iNo+oNo+uNo);
 			printf("a %d%%\ne %d%%\ni %d%%\no %d%%\nu %d%%\nother %d%%\n",aNo,eNo,iNo,oNo,uNo,otherNo);
 	}
 	return 0;
