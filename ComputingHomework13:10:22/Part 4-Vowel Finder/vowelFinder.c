@@ -39,11 +39,15 @@ int main()
 		uNo=0;
 		otherNo=0;
 		spaceNo=0;
-		printf("Please input a string to analyse, but without spaces please!\nString: ");
-		scanf("%s",stringToAnalyse);
+		printf("Please input a string to analyse.\nString: ");
+		if (fgets(stringToAnalyse, sizeof(stringToAnalyse), stdin)==NULL)
+			break;
+		//scanf("%s",stringToAnalyse);
 		//fprintf(stderr,"1");
 		strLength=strlen(stringToAnalyse);
-		for(i=1;i<=strLength;i++)
+		if ((strLength>0) && (stringToAnalyse[strLength-1]=='\n'))
+        	strLength--;
+        for(i=1;i<=strLength;i++)
 		{
 			if(i>strLength)
 			{
@@ -66,6 +70,12 @@ int main()
 			}else if((letterToAnalyse=='u')||(letterToAnalyse=='U'))
 			{	
 				uNo++;
+			}else if(letterToAnalyse==' ')
+			{
+				spaceNo++;
+			}else
+			{ 
+				otherNo++;
 			}
 			/*if(spaceNo>0)
 			{
@@ -77,15 +87,15 @@ int main()
 				spaceNo=0;
 			}*/
 		}
-			otherNo=strLength-(aNo+eNo+iNo+oNo+uNo);
-			printf("Number of a(s):%d\nNumber of e(s):%d\nNumber of i(s):%d\nNumber of o(s):%d\nNumber of u(s):%d\nNumber of other letter(s):%d\n",aNo,eNo,iNo,oNo,uNo,otherNo);
-			aNo*=(100/strLength);
-			eNo*=(100/strLength);
-			iNo*=(100/strLength);
-			oNo*=(100/strLength);
-			uNo*=(100/strLength);
-			otherNo=100-(aNo+eNo+iNo+oNo+uNo);
-			printf("a %d%%\ne %d%%\ni %d%%\no %d%%\nu %d%%\nother %d%%\n",aNo,eNo,iNo,oNo,uNo,otherNo);
+		strLength -= spaceNo;
+		printf("Number of a(s):%d\nNumber of e(s):%d\nNumber of i(s):%d\nNumber of o(s):%d\nNumber of u(s):%d\nNumber of other letter(s):%d\n",aNo,eNo,iNo,oNo,uNo,otherNo);
+		aNo*=(100/strLength);
+		eNo*=(100/strLength);
+		iNo*=(100/strLength);
+		oNo*=(100/strLength);
+		uNo*=(100/strLength);
+		otherNo=100-(aNo+eNo+iNo+oNo+uNo);
+		printf("a %d%%\ne %d%%\ni %d%%\no %d%%\nu %d%%\nother %d%%\n",aNo,eNo,iNo,oNo,uNo,otherNo);
 	}
 	return 0;
 }
