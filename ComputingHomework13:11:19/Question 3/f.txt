@@ -1,0 +1,4 @@
+I predict that the program will print:"9 11" because the first int printed is x+4(9) and the second is x+6(11)
+
+To test the program, I copied it from the site into a .c file, compiled it and ran it and this is what I got.
+"9 11"
