@@ -1,0 +1,4 @@
+Fibbonacci Test Plan
+To test this program, simply type in 0 when it asks you for a number.
+It will then print the first 15 numbers in the fibbonacci sequence.
+Quickly check that against any resource.
