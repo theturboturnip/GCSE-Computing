@@ -5,7 +5,7 @@ int fibbonaci(int x){
     x-=2;
     printf("That number in the fibbonacci sequence is");
     if(x+2<3){
-        printf(" 0!\n");
+        printf(" 0\n");
         return 0;
     }
     for(i=0;i<x;i++){
