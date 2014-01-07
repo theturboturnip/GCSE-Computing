@@ -1,0 +1,8 @@
+all: main.out
+
+main.out:  main.c
+	git add .
+        git status
+	git commit
+	git push master
+
