@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+from subprocess import call
+date=raw_input("What is the date for the homework?").strip().lower()
+numOfProjects=(int)raw_input("How many projects?")
+
+call(["cd","Users/samuel/Documents/Homework"])
+call(["ls"])
+call(["mkdir", "ComputingHomework"+date])
+call(["cd","./ComputingHomework"+date])
+for i in range(numOfProjects):
+    call(["mkdir",(str)i+" - "])
+call(["cd","../"])
