@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from subprocess import call
-call(["git","add","."])
-call(["git", "status"])
-call(["git", "commit", "-m", "\""+"AutomatedCommit"+""])
+import time
+#call(["git","add","."])
+#call(["git", "status"])
+call(["git", "commit", "-a","-m", "\""+"AutomatedCommit"+time.strftime("%d/%m/%Y")+"\""])
 call(["git", "push","master"])
