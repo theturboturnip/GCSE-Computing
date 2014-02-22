@@ -1,20 +1,8 @@
 #!/usr/bin/env python
-import subprocess,sys,datetime.date
+import subprocess,sys,time
 #seperate date into month,day,and year
-day=raw_input("What is the day of the homework?")
-month=raw_input("What is the month of the homework?")
-year=raw_input("What is the year of the homework?")
-stringDay=day
-stringMonth=month
-stringYear=year
 
-if(day<10):
-    stringDay="0"+day
-if(month<10):
-    stringMonth="0"+month
-if(year<10):
-    stringYear="0"+year
-date=stringYear+":"+stringMonth+":"+stringDay
+date=time.strftime("%y:%m:%d")
 folderName="ComputingHomework"+date
 
 
