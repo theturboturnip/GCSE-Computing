@@ -1,1 +1,0 @@
-It tests if 3 numbers are equal
