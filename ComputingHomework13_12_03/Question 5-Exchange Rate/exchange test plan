@@ -1,0 +1,13 @@
+Exchange Calculator Test Plan
+To test this, convert 5 of every currency to all the other currencies.
+So:
+£5 to $
+£5 to €
+$5 to £
+$5 to €
+€5 to £
+€5 to $
+
+Make sure to change the exchange rate to the correct rate at the time of testing.
+
+You can then check the results to your preferred source of currency exchange.

@@ -1,0 +1,10 @@
+1 - Execution time for bubbleSort.out
+	0.882s
+    Execution time for heapSort.out 
+	0.116s
+2 - Computational complexity of selection sort
+	O(n*n)
+3 - Discussion 
+	If you are using a computer that does not have a lot of memory, having a low complexity is very 	important. This means you would check for the lowest computational complexity, not the lowest 		execution time. However, if you needed an algorithm that needed to process a large amount of numbers, 	or simply needed to do it quickly, you would want an algorithm with a low execution time.
+4 - A better algorithm
+	To me it seems that the best sorting algorithm is the heap sort, with a good average speed and 		complexity.
