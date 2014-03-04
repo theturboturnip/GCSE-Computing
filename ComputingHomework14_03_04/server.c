@@ -15,9 +15,9 @@ int read_and_send_file(  char *file_to_get, int con){
     {
         char line [ 128 ]; /* or other suitable maximum line size */
         while ( (fgets ( line, sizeof(line), file ) != NULL)) /* read a line */
-        {
-		printf("Server Sending %s\n", line);
-		send(con, line, strlen(line)+1, 0); // we send our answer		
+        {	
+		printf("Server Sending %s", line);
+		send(con, line, strlen(line)+1, 0); // we send our answer	
         }
         fclose ( file );
     }

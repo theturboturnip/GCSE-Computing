@@ -4,18 +4,18 @@
 #include <sys/un.h>
 #include <errno.h>
 #include <strings.h>
+#include <unistd.h>
 
 #define SERVER_SOCKET_FILE "/tmp/server.sock"
 #define CLIENT_SOCKET_FILE "/tmp/client.sock"
 
 int main(){
-	int srv, clt, con;
-	int addr_len;
-	int data=0;
+	int clt;
 	int i;
-    	static const char file_to_get[256];
+    	static char file_to_get[256];
     	printf("What file should I get?: ");
     	scanf("%s", file_to_get);
+	printf("\n");
 	struct sockaddr_un server_addr;
 	struct sockaddr_un client_addr;
 
@@ -49,13 +49,11 @@ int main(){
 			printf("Connect failed %d\n", errno);
 			return -1;
 		}
-		while(data<100){ // we send data!			
-			printf("Client sending filename %s\n", file_to_get);
-			send(clt, &file_to_get, strlen(file_to_get)+1, 0); // we send a request 
+		send(clt, &file_to_get, strlen(file_to_get)+1, 0); // we send a request 
+		while(1){ // we send data!			
 			i = recv(clt, &file_to_get, 256, MSG_WAITALL); // we read the answer
-			printf("Client received %d %s\n", i, file_to_get);
 			if (i<=0) break;
-
+			printf("%s",file_to_get);
 		}
 		close(clt); // we close the socket
     }
