@@ -13,7 +13,9 @@ int main(){
 	int addr_len;
 	int data=0;
 	int i;
-
+    char file_to_get;
+    printf("What file should I get?: ");
+    scanf("%s", &file_to_get);
 	struct sockaddr_un server_addr;
 	struct sockaddr_un client_addr;
 
@@ -45,8 +47,8 @@ int main(){
 		}
 		while(data<100){ // we send data!			
 			printf("Client sending %d\n", data);
-			send(clt, &data, sizeof(int), 0); // we send a request 
-			recv(clt, &data, sizeof(int), MSG_WAITALL); // we read the answer
+			send(clt, &file_to_get, sizeof(char), 0); // we send a request 
+			recv(clt, &file_to_get, sizeof(char), MSG_WAITALL); // we read the answer
 			printf("Client received %d\n", data);
 
 		}

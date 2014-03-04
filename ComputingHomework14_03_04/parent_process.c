@@ -11,9 +11,9 @@
 int main(){
 	int srv, clt, con;
 	int addr_len;
-	int data=0;
+	char data="";
 	int i;
-
+    char file_to_send;
 	struct sockaddr_un server_addr;
 	struct sockaddr_un client_addr;
     // we set the client address
@@ -47,11 +47,11 @@ int main(){
 		while((con=accept(srv, (struct sockaddr *)&client_addr, &addr_len))>0){ // we wait for a request to arrive
 			if(fork()==0){ // we create a new process to handle the request
 				while(data<100){
-					if(recv(con, &data, sizeof(int), MSG_WAITALL)>0){ // we read the request
+					if(recv(con, &data, sizeof(char), MSG_WAITALL)>0){ // we read the request
 						printf("Server Receieved %d\n", data);
-						data++;
+						file_to_send="Blah"
 						printf("Server Sending %d\n", data);
-						send(con, &data, sizeof(int), 0); // we send our answer			
+						send(con, &file_to_send, sizeof(char), 0); // we send our answer			
 					}
 				}
 				close(con);
