@@ -4,16 +4,35 @@
 #include <sys/un.h>
 #include <errno.h>
 #include <strings.h>
+#include <unistd.h>
 
 #define SERVER_SOCKET_FILE "/tmp/server.sock"
 #define CLIENT_SOCKET_FILE "/tmp/client.sock"
-
+int read_and_send_file(  char *file_to_get, int con){
+    printf("Opened File");
+    FILE *file = fopen ( file_to_get, "r" );
+    
+    if ( file != NULL )
+    {
+        char line [ 128 ]; /* or other suitable maximum line size */
+        while ( (fgets ( line, sizeof(line), file ) != NULL)) /* read a line */
+        {
+		printf("Server Sending %s\n", line);
+		send(con, line, strlen(line)+1, 0); // we send our answer		
+        }
+        fclose ( file );
+    }
+    else
+    {
+	printf("ERRORERROR");
+        perror ( file_to_get ); /* why didn't the file open? */
+    }
+    return 0;
+}
 int main(){
-	int srv, clt, con;
-	int addr_len;
-	char data="";
-	int i;
-    char file_to_send;
+	int srv, con;
+	unsigned int addr_len;
+	char data[256];
 	struct sockaddr_un server_addr;
 	struct sockaddr_un client_addr;
     // we set the client address
@@ -46,12 +65,11 @@ int main(){
 		addr_len = sizeof(client_addr);
 		while((con=accept(srv, (struct sockaddr *)&client_addr, &addr_len))>0){ // we wait for a request to arrive
 			if(fork()==0){ // we create a new process to handle the request
-				while(data<100){
-					if(recv(con, &data, sizeof(char), MSG_WAITALL)>0){ // we read the request
-						printf("Server Receieved %d\n", data);
-						file_to_send="Blah"
-						printf("Server Sending %d\n", data);
-						send(con, &file_to_send, sizeof(char), 0); // we send our answer			
+				while(1){
+					if(recv(con, data, sizeof(data), MSG_WAITALL)>0){ // we read the request
+						printf("Server Receieved %s\n", data);
+						read_and_send_file(data,con);
+						break;
 					}
 				}
 				close(con);

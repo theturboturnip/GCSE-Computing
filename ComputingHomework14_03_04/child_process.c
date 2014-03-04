@@ -13,9 +13,9 @@ int main(){
 	int addr_len;
 	int data=0;
 	int i;
-    char file_to_get;
-    printf("What file should I get?: ");
-    scanf("%s", &file_to_get);
+    	static const char file_to_get[256];
+    	printf("What file should I get?: ");
+    	scanf("%s", file_to_get);
 	struct sockaddr_un server_addr;
 	struct sockaddr_un client_addr;
 
@@ -25,10 +25,14 @@ int main(){
 	client_addr.sun_family = AF_UNIX;
 	strncpy(client_addr.sun_path, CLIENT_SOCKET_FILE, 104);
 
+	// we set the server address
+	memset(&server_addr, 0, sizeof(server_addr));
+	server_addr.sun_family = AF_UNIX; // this is a local socket, we are on our machine not using the network yet!
+	strncpy(server_addr.sun_path, SERVER_SOCKET_FILE, 104);
+
 	// fork create a new process, look online if you do not understand!
 	//if(fork()==0){ // child process
 	if(1){
-		clt = socket(AF_UNIX, SOCK_STREAM, 0); // we create a socket
 		clt = socket(AF_UNIX, SOCK_SEQPACKET, 0); // we create a socket
 		if(clt<0){
         	printf("Socket failed %d\n", errno);
@@ -46,10 +50,11 @@ int main(){
 			return -1;
 		}
 		while(data<100){ // we send data!			
-			printf("Client sending %d\n", data);
-			send(clt, &file_to_get, sizeof(char), 0); // we send a request 
-			recv(clt, &file_to_get, sizeof(char), MSG_WAITALL); // we read the answer
-			printf("Client received %d\n", data);
+			printf("Client sending filename %s\n", file_to_get);
+			send(clt, &file_to_get, strlen(file_to_get)+1, 0); // we send a request 
+			i = recv(clt, &file_to_get, 256, MSG_WAITALL); // we read the answer
+			printf("Client received %d %s\n", i, file_to_get);
+			if (i<=0) break;
 
 		}
 		close(clt); // we close the socket
