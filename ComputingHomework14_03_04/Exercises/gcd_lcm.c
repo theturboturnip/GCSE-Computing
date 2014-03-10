@@ -1,7 +1,14 @@
 #include <stdio.h>
 int get_gcd(int a,int b){
-	for(i=a*b;i--;i>0){
-		if (i%a==0&&i%b==0){
+    int i=0;
+    int m;
+    if (a>b){
+        m = b;
+    }else{
+        m = a;
+    }
+	for(i=m;i--;i>0){
+		if (a%i==0&&b%i==0){
 			printf("GCD: %d\n",i);
 			return i;
 		}

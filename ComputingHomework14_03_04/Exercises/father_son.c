@@ -2,12 +2,13 @@
 
 int main(){
 	int father,son=0;
-	printf("When the son was 0, how old was the father?: ");
+	printf("father birthdate?: ");
 	scanf("%d",&father);
-	while(son*2!=father){
-		son++;
-		father++;
-	}
-	printf("The son will be %d years old and the father will be %d years old\n when the father is twice as old as the son.",&son,&father);
+    printf("son birthdate?: ");
+	scanf("%d",&son);
+    father=son-father;
+    son = father;
+    father *= 2;
+	printf("The son will be %d years old and the father will be %d years old\n when the father is twice as old as the son.\n",son,father);
 	return 0;
 }
