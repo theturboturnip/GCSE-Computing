@@ -1,0 +1,32 @@
+1. The Objective
+   For this program, I need to make a program that does the following:
+       Takes in a filename.
+       Prints the contents.
+   For example, it might take in 'file1.txt', then it would print
+   'FILE1', the contents of 'file1.txt'.
+2. The Test
+   To test the program, I will run it 5 times, with these inputs:
+   1.'file1.txt' This should make the program print 'FILE1'
+   2.'file2.txt' This should make the program print 'I AM FILE DOS'
+   3.'file3.txt' This should make the program print 'There are
+                                                     5
+                                                     files. I am the third.'
+   4.'file4.txt' This should make the program print 'I am number
+                                                     FOUR.'
+   5.'file5.txt' This should make the program print 
+     'This is the final file, or file 5.'
+3. Writing the code
+   First I wrote a program that opened a text file. I then made it
+   print all the lines. Very simple.
+4. The testing
+   I ran the program 5 times, and this is what came out.
+   1.'file1.txt' This made the program print 'FILE1'
+   2.'file2.txt' This made the program print 'I AM FILE DOS'
+   3.'file3.txt' This made the program print 'There are
+                                                     5
+                                                     files. I am the third.'
+   4.'file4.txt' This made the program print 'I am number
+                                                     FOUR.'
+   5.'file5.txt' This made the program print 'This is the final file, or file 5.'
+The test succeded. I can therefore conclude that I have finished the objective.
+

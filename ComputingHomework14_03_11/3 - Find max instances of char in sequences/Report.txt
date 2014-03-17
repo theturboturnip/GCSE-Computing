@@ -1,0 +1,28 @@
+1. The Objective
+   For this program, I need to make a program that does the following:
+       Takes in 1 character and 5 sequences of numbers.
+       Look for the character in the 5 sequences.
+       Tell me the maximum amount of times the character occured in
+       the 5 sequences.
+   For example, it might take in 'g',
+   'g','gg','ggg','gggg','ggggg'. This would make it output 5.
+   
+2. The Test
+   To test the program, I will run it 3 times, with these inputs:
+   1.'g','g','gg','ggg','gggg','ggggg'. This should make it output 5.
+   2.'z','abba','abza','azza','azzz','zzzz'. This should make it
+     output 4.
+   3.'m','a','b','c','d','e'. This should make it output 0.
+3. Writing the code
+   First, I looked on the internet for how to get every char in a
+   string. I then found a function that called a function for every
+   character in a string. I then implemented that, and also wrote a
+   function that would be called with every character in a line. After
+   that, it looked fine.
+4. The testing
+   I ran the program 3 times, and this is what came out.
+   1.'g','g','gg','ggg','gggg','ggggg'. This made it output 5.
+   2.'z','abba','abza','azza','azzz','zzzz'. This made it output 4.
+   3.'m','a','b','c','d','e'. This made it output 0.
+The test succeded. I can therefore conclude that I have finished the objective.
+

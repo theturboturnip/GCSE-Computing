@@ -1,0 +1,38 @@
+1. The Objective
+   For this program, I need to make a program that does the following:
+       Takes in 2 filenames and 2 words.
+       Replace all occurences of the first word in the first file by
+       the second word.
+       Write the result into the second text file.
+   For example, it might take in 'file1.txt', 'file2.txt',
+   'self-destruction', 'explosion'. This would then look through
+   'file1.txt' for the word 'self-destruction', and then change it to
+   'explosion'. It would then write the result to 'file2.txt'.
+2. The Test
+   To test the program, I will run it 3 times, with these inputs:
+   1.'file1.txt','file2.txt','leave','stay'. This should make
+     file2.txt read 'Please stay on the ship. A self-destruction is imminent.'
+   2.'file1.txt','file2.txt','stay','sit'. This should make file2.txt
+     read 'Please leave the ship. A self-detruction is imminent.'
+   3.'file2.txt','flibble.txt'. This should make the program return an
+     error, complaining about the fact that 'flibble.txt' does not
+     exist.
+3. Writing the code
+   After I wrote a basic program that opened 2 text files,
+   I added a for loop after the code that opened the files. This would
+   go through every line in the first file and send it to the function
+   'findreplace()'. I then made 'findreplace' split the line at every
+   space, checked if the line was one of the things it had to replace,
+   and if so, replaced it. It then added them all together and
+   returned the result. After adding some code to write the result
+   into the second file, it seemed to work.
+4. The testing
+   I ran the program 3 times, and this is what came out.
+   1.'file1.txt','file2.txt','leave','stay'. This made file2.txt read 
+     'Please stay on the ship. A self-destruction is imminent.'
+   2.'file1.txt','file2.txt','stay','sit'. This made file2.txt read
+     'Please leave the ship. A self-detruction is imminent.'
+   3.'file2.txt','flibble.txt'. This made the program return an
+     error, complaining about the fact that 'flibble.txt' does not
+     exist.
+
